@@ -1,0 +1,16 @@
+[
+    {
+        "login" : "kkepa@deloittece.com",
+        "password" : "testpassword"
+    }, 
+    
+    {
+        "login" : "kkepa@deloittece.com",
+        "password" : "testpassword"
+    }, 
+    
+    {
+        "login" : "kkepa@deloittece.com",
+        "password" : "testpasswor"
+    }
+]
