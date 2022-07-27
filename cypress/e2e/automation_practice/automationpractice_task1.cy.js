@@ -25,6 +25,5 @@ context('e-shop go to', () =>{
         }
 
     }) 
-    
-    
+   
 })
