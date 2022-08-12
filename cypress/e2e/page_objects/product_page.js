@@ -1,7 +1,7 @@
 export class ProductPage {
 
     static checkIfProductPageIsOpen(product_name) {
-        cy.get('#columns > div.breadcrumb.clearfix').contains(product_name);
+        cy.get('#columns > div.breadcrumb.clearfix').should('contain', product_name);
     }
 
     static clickAddQuantity() {
@@ -22,6 +22,8 @@ export class ProductPage {
     }
 
     static getPrice() {
-        return cy.get('#our_price_display');
+        let price = Cypress.$(`#our_price_display`);
+        console.log(price[0].innerHTML.trim());
+        return price[0].innerHTML.trim();
     }
 }

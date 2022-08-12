@@ -1,0 +1,10 @@
+{
+    "user1":{
+        "email":"kkepa@deloittece.com",
+        "password": "testpassword"
+    },
+    "user2":{
+        "email": "kkepa@deloittece.com",
+        "password": "falsepassword"
+    }
+}

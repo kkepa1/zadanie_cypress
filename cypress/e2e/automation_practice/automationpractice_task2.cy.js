@@ -5,6 +5,7 @@ import {WomenPage} from "../page_objects/women_page";
 import {CheckoutPage} from "../page_objects/checkout_page";
 
 context('e-shop go to', () =>{
+    let total;
     before(() => {
         MainPage.openAutomationPracticePage();
     })
@@ -31,24 +32,24 @@ context('e-shop go to', () =>{
 
 
 
-        it('go to basket and check if price is correct', () => {
+        it('get product price and go to checkout', () => {
 
-            cy.get('#our_price_display').invoke('text').as('price');
+            //bierze price ze strony z produktem
+            let price = ProductPage.getPrice();
+            total = Number(price.substring(1)) *2;
 
+            //idzie do basket
             ProductPage.clickProceedToCheckout();
 
-            cy.get('#total_product').invoke('text').as('total_price');
-
-            cy.get('@price').then((price) => {
-                let price_float = price.match(/[+-]?\d+(\.\d+)?/g).map(function(v) { return parseFloat(v); });
-                let new_price = (price_float * 2).toFixed(2);
-
-
-               cy.get('@total_price').then((total_price) => {
-
-                    expect(total_price).to.contain(new_price);
-               })
-            });
         })
-    })   
+
+        it('go to basket and check if price is correct', () => {
+
+            CheckoutPage.checkIfIsOpen();
+            //bierze total price z basketu
+            let total_price = CheckoutPage.getTotalPrice();
+
+            CheckoutPage.checkSum(total_price, total);
+        })
+    })
 })
